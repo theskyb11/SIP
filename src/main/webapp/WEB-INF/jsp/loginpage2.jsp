@@ -185,7 +185,7 @@
             </div>
             <button type="submit"
                     style="background-color: #03a9f4; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; cursor: pointer; align-content:center;">
-                Sign In2
+                Sign In
             </button>
         </div>
     </form>
