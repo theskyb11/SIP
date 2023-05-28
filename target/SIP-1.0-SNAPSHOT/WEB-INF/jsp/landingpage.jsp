@@ -171,6 +171,13 @@
                 left: 5%; /* Adjust the left position as per your preference */
             }
         }
+        #footer {
+            background-color: #4390ff;
+            color: #fff;
+            padding: 10px;
+            margin-top: auto;
+            text-align: center;
+        }
 
     </style>
 </head>
@@ -197,7 +204,7 @@
 
     </div>
 </div>
-<footer style="background-color: #f1f1f1; padding: 10px; text-align: center;">
+<footer id="footer">
     <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>
 </footer>
 </body>
