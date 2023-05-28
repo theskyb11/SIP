@@ -1,5 +1,4 @@
-
-
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +16,74 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        body.dark-mode {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            margin-left: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            transition: 0.4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #262626;
+            transition: 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: greenyellow;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Rounded sliders */
+
+        .slider.round {
+            border-radius: 20px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
         }
 
         .navbar {
@@ -27,6 +94,11 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 20px;
+        }
+
+        .navbar.dark-mode-navbar {
+            background-color: #aaaaaa;
+            color: #fff;
         }
 
         .navbar-logo {
@@ -115,11 +187,25 @@
                 transform: translateY(0);
             }
         }
+
+        #footer {
+            background-color: #4390ff;
+            color: #fff;
+            padding: 10px;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        #footer.dark-mode-footer {
+            background-color: #aaaaaa;
+            color: #fff;
+        }
+
         .circular-button {
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            border:#262626;
+            border: #262626;
             margin: 7%;
             background-color: #fff;
             color: #262626;
@@ -139,8 +225,6 @@
             object-fit: cover;
         }
 
-
-
     </style>
 </head>
 <body>
@@ -154,35 +238,77 @@
  </div></span>
     </div>
     <div class="navbar-contact">
+        <a href="studentdashboardpage.htm"><b style="color: #262626; margin-right: 15px; font-size: 20px">Home</b></a>
         <a href="contactpage.htm"><b style="font-size: 20px; color: #262626">Contact Us</b></a>
-        <a href="tel: +91-8793323500" style="color: #262626"><i class="fa fa-phone"></i>
+        <a href="tel: +91-8793323500" style="color: #fff"><i class="fa fa-phone"></i>
             +91-8793323500</a>
     </div>
+    <%--    <button id="toggle-theme-button" class="btn btn-primary">Toggle Dark Mode</button>--%>
+    <label class="switch">
+        <input type="checkbox" id="toggle-theme-slider">
+        <span class="slider"></span>
+    </label>
+
     <div class="navbar-logout">
         <a href="landingpage.htm">
-            <button class="btn btn-danger">Logout</button>
+            <button class="btn btn-danger" style="font-size:15px"><b>Logout</b></button>
         </a>
     </div>
+
 </div>
+
+<%--//Putting content here--%>
 <br>
-<h1>    Name: Samarp Jain</h1>
+<h1> Name: Samarp Jain</h1>
 <br>
-<h1>  PRN:202101040191</h1>
-<a href="fileupload.htm">
-<button type = button class="circular-button">
+<h1> PRN:202101040191</h1>
+<button class="circular-button">
     <img src="https://www.linkpicture.com/q/try2.png" alt="Image 1">
 </button>
-</a>
 
 <button class="circular-button">
-    <img src="#" alt="Image 2">
+    <img src="tru2.gif" alt="Image 2">
 </button>
 <button class="circular-button">
     <img src="https://www.linkpicture.com/q/try3.png" alt="Image 3">
 </button>
 
-<footer style="background-color: #4390ff; padding: 10px; text-align: center;">
+<footer id="footer">
     <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>
 </footer>
+
+<script>
+    var darkModeEnabled = false;
+
+    function toggleDarkMode() {
+        var body = document.body;
+        var navbar = document.querySelector('.navbar');
+        var footer = document.getElementById('footer');
+
+        if (darkModeEnabled) {
+            body.classList.remove("dark-mode");
+            navbar.classList.remove("dark-mode-navbar");
+            footer.classList.remove("dark-mode-footer");
+            localStorage.setItem("darkModeEnabled", "false"); // Store the theme mode in localStorage
+        } else {
+            body.classList.add("dark-mode");
+            navbar.classList.add("dark-mode-navbar");
+            footer.classList.add("dark-mode-footer");
+            localStorage.setItem("darkModeEnabled", "true"); // Store the theme mode in localStorage
+        }
+        darkModeEnabled = !darkModeEnabled;
+    }
+
+
+    var toggleSlider = document.getElementById("toggle-theme-slider");
+    toggleSlider.addEventListener("change", toggleDarkMode);
+    var storedThemeMode = localStorage.getItem("darkModeEnabled");
+    if (storedThemeMode === "true") {
+        toggleDarkMode();
+        document.getElementById("toggle-theme-slider").checked = true;
+    }
+</script>
+
+
 </body>
 </html>
