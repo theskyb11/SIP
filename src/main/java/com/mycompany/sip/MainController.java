@@ -21,34 +21,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 //what is this?
-    @RequestMapping("/loginpage1")
+    @RequestMapping("/facultyloginpage")
     public String loginpage1function() {
-        return "loginpage1";
+        return "facultyloginpage";
     }
 
-    @RequestMapping("/loginpage2")
+    @RequestMapping("/studentloginpage")
     public String loginpage2function() {
-        return "loginpage2";
+        return "studentloginpage";
     }
 
-    @RequestMapping("/invalidloginpage1")
+    @RequestMapping("/facultyinvalidloginpage")
     public String invalidloginpage1function() {
-        return "invalidloginpage1";
+        return "facultyinvalidloginpage";
     }
     
-    @RequestMapping("/invalidloginpage2")
+    @RequestMapping("/studentinvalidloginpage")
     public String invalidloginpage2function() {
-        return "invalidloginpage2";
+        return "studentinvalidloginpage";
     }
 
-    @RequestMapping("/dashboard1page")
+    @RequestMapping("/facultydashboardpage")
     public String dashboardpage1function() {
-        return "dashboardpage1";
+        return "facultydashboardpage";
     }
     
-    @RequestMapping("/dashboard2page")
+    @RequestMapping("/studentdashboardpage")
     public String dashboardpage2function() {
-        return "dashboardpage2";
+        return "studentdashboardpage";
     }
 
     @RequestMapping("/landingpage")
@@ -77,9 +77,9 @@ public class MainController {
 
             System.out.println(n + " " + m);
             if (x.equals(n) && y.equals(m)) {
-                return "dashboardpage1";
+                return "facultydashboardpage";
             } else {
-                return "invalidloginpage1";
+                return "facultyinvalidloginpage";
             }
         } catch (ClassNotFoundException | NumberFormatException | SQLException k) {
             System.out.println(k.getMessage());
@@ -108,9 +108,9 @@ public class MainController {
 
             System.out.println(n + " " + m);
             if (x.equals(n) && y.equals(m)) {
-                return "dashboardpage2";
+                return "studentdashboardpage";
             } else {
-                return "invalidloginpage2";
+                return "studentinvalidloginpage";
             }
         } catch (ClassNotFoundException | NumberFormatException | SQLException k) {
             System.out.println(k.getMessage());
