@@ -180,13 +180,13 @@
             <div class="box">
                 <a href="https://mitaoe.ac.in" target="_blank"><img src="https://mitaoe.mastersofterp.in/Images/Login/mita_logo.png" style="width: 300px;" alt="mitlogo"></a>
                 <h1 style="color: currentColor;">Choose Log In </h1><br><br>
-                <a href="loginpage1.htm">
+                <a href="facultyloginpage.htm">
                     <button type="button" class="btn btn-info" style="display: flex; align-items: center; ">
                         <img src="https://i.ibb.co/02J6jNM/teacher-2.png" style="margin-right: 10px;">
                         Faculty Login
                     </button>
                 </a>
-                <a href="loginpage2.htm">
+                <a href="studentloginpage">
                     <button type="button" class="btn btn-info" style="display: flex; align-items: center; ">
                         <img src="https://i.ibb.co/YtKKT4J/students.png" style="margin-right: 10px;">
                         Student Login

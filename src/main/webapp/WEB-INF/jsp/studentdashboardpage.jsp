@@ -10,6 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Welcome Student!!!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="https://mitaoe.mastersofterp.in/Images/Login/mita_logo_fv.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -44,7 +45,7 @@
             margin-right: 10px;
         }
 
-        .navbar-logo p{
+        .navbar-logo p {
             margin: 0;
         }
 
@@ -124,7 +125,8 @@
 <body>
 <div class="navbar">
     <div class="navbar-logo">
-        <img src="https://mitaoe.ac.in/assets/images/MITAOE-logo.webp" alt="Logo">
+        <a href="https://mitaoe.ac.in" target="_blank"><img src="https://mitaoe.ac.in/assets/images/MITAOE-logo.webp"
+                                                            alt="Logo"></a>
         <span style="font-family: 'Arial Black'; font-size: 25px; color: #262626"><div id="containerAnimation"
                                                                                        class="container-bottom-to-up">
   <p class="top-to-bottom">Summer Internship Programme</p>
@@ -132,7 +134,8 @@
     </div>
     <div class="navbar-contact">
         <a href="contactpage.htm"><b style="font-size: 20px; color: #262626">Contact Us</b></a>
-        <a href="tel: +91-8793323500" style="color: #262626">+91-8793323500</a>
+        <a href="tel: +91-8793323500" style="color: #262626"><i class="fa fa-phone"></i>
+            +91-8793323500</a>
     </div>
     <div class="navbar-logout">
         <a href="landingpage.htm">
@@ -140,5 +143,9 @@
         </a>
     </div>
 </div>
+
+<footer style="background-color: #f1f1f1; padding: 10px; text-align: center;">
+    <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>
+</footer>
 </body>
 </html>
