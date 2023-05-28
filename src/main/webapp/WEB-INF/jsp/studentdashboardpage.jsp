@@ -1,10 +1,5 @@
-<%-- 
-    Document   : dashboardpage
-    Created on : May 1, 2023, 4:14:12 PM
-    Author     : Akash
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,6 +115,32 @@
                 transform: translateY(0);
             }
         }
+        .circular-button {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border:#262626;
+            margin: 7%;
+            background-color: #fff;
+            color: #262626;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .circular-button:hover {
+            transform: scale(1.05);
+        }
+
+        .circular-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -143,6 +164,20 @@
         </a>
     </div>
 </div>
+<br>
+<!-- <h1>    Name: Samarp Jain</h1>
+<br>
+<h1>  PRN:202101040191</h1> -->
+<button class="circular-button">
+    <img src="https://www.linkpicture.com/q/try2.png" alt="Image 1">
+</button>
+
+<button class="circular-button">
+    <img src="tru2.gif" alt="Image 2">
+</button>
+<button class="circular-button">
+    <img src="https://www.linkpicture.com/q/try3.png" alt="Image 3">
+</button>
 
 <footer style="background-color: #4390ff; padding: 10px; text-align: center;">
     <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>
