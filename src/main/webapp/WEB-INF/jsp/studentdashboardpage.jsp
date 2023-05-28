@@ -168,12 +168,14 @@
 <h1>    Name: Samarp Jain</h1>
 <br>
 <h1>  PRN:202101040191</h1>
-<button class="circular-button">
+<a href="fileupload.htm">
+<button type = button class="circular-button">
     <img src="https://www.linkpicture.com/q/try2.png" alt="Image 1">
 </button>
+</a>
 
 <button class="circular-button">
-    <img src="tru2.gif" alt="Image 2">
+    <img src="#" alt="Image 2">
 </button>
 <button class="circular-button">
     <img src="https://www.linkpicture.com/q/try3.png" alt="Image 3">
