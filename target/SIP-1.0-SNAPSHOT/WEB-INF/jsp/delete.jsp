@@ -1,9 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samarp
-  Date: 28-05-2023
-  Time: 22:19
-  To change this template use File | Settings | File Templates.
+<%--  
+    Created by IntelliJ IDEA
+    User: Akash
+    Date: 5/29/2023
+    Time: 2:12 AM
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -11,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Add Certificate Details</title>
+    <title>Welcome Student!!!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="https://mitaoe.mastersofterp.in/Images/Login/mita_logo_fv.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -288,7 +287,7 @@
         }
 
         .form-container input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: tomato;
         }
 
 
@@ -324,21 +323,21 @@
 
 </div>
 <div class="form-container">
-    <h1>Add Student Certificate</h1>
-    <form action="insert" method="post">
+    <h1>Delete Student Certificate</h1>
+    <form action="deletec" method="post">
         <label for="certificateId">Certificate ID:</label>
         <input type="text" id="certificateId" name="a" required><br><br>
 
         <label for="studentId">Student ID:</label>
         <input type="text" id="studentId" name="b" required><br><br>
 
-        <label for="completionDate">Completion Date:</label>
-        <input type="date" id="completionDate" name="c" required><br><br>
+<%--        <label for="completionDate">Completion Date:</label>--%>
+<%--        <input type="date" id="completionDate" name="c" required><br><br>--%>
 
-        <label for="document">Document:</label>
-        <input type="text" id="document" name="d" required><br><br>
+<%--        <label for="document">Document:</label>--%>
+<%--        <input type="text" id="document" name="d" required><br><br>--%>
 
-        <input type="submit" value="Add Certificate" onclick="afun()">
+        <input type="submit" value="Delete Certificate" onclick="afun()">
     </form>
 </div>
 
@@ -347,9 +346,8 @@
 </footer>
 
 <script>
-
     function afun(){
-        alert("Certificate Added Succesfully");
+        alert("Certificate Deleted Succesfully");
     }
     var darkModeEnabled = false;
 

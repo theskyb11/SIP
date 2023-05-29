@@ -1,12 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samarp
-  Date: 28-05-2023
-  Time: 22:19
-  To change this template use File | Settings | File Templates.
+<%--  
+    Created by IntelliJ IDEA
+    User: Akash
+    Date: 5/29/2023
+    Time: 9:09 AM
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +35,7 @@
             /*background-color: #f4f4f4;*/
 
         }
+
         body.dark-mode {
             background-color: #000;
             color: #fff;
@@ -236,20 +237,12 @@
             height: 100%;
             object-fit: cover;
         }
+
         .button-container {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .form-container {
-            width: 400px;
-            background-color: #aaaaaa;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 20px auto 0;
-        }
-
 
         h1 {
             color: #333333;
@@ -257,40 +250,11 @@
             font-weight: bold;
         }
 
-        .form-container label {
-            align-items:center ;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333333;
-
+        .test {
+            overflow: auto;
+            max-height: 400px;
+            padding: 20px;
         }
-
-        .form-container input[type="text"],
-        .form-container input[type="date"],
-        .form-container input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cccccc;
-            border-radius: 3px;
-            font-size: 16px;
-        }
-
-        .form-container input[type="submit"] {
-            background-color: #3498DB;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .form-container input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
 
     </style>
 </head>
@@ -323,24 +287,90 @@
     </div>
 
 </div>
-<div class="form-container">
-    <h1>Add Student Certificate</h1>
-    <form action="insert" method="post">
-        <label for="certificateId">Certificate ID:</label>
-        <input type="text" id="certificateId" name="a" required><br><br>
 
-        <label for="studentId">Student ID:</label>
-        <input type="text" id="studentId" name="b" required><br><br>
 
-        <label for="completionDate">Completion Date:</label>
-        <input type="date" id="completionDate" name="c" required><br><br>
+<%--content--%>
+<div class="test">
+    <%
+        try {
+            String studentID = (String) request.getAttribute("studentID");
+            String connectionURL = "jdbc:mysql://localhost:3306/sip";
+            Connection connection = null;
 
-        <label for="document">Document:</label>
-        <input type="text" id="document" name="d" required><br><br>
+            Statement statement = null;
+            ResultSet rs = null;
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-        <input type="submit" value="Add Certificate" onclick="afun()">
-    </form>
+            connection = DriverManager.getConnection(connectionURL, "root", "root");
+
+            statement = connection.createStatement();
+            String QueryString = "SELECT * from adding NATURAL JOIN student;";
+            rs = statement.executeQuery(QueryString);
+    %>
+    <TABLE cellpadding="15" border="1" style="background-color: #FFFFE0; width: 100%; table-layout: fixed;"
+           class="content-table">
+        <tr style="background-color: #BDB76B;">
+            <th><strong style="font-family: Poppins,sans-serif;">CertificateID</strong></th>
+            <th><strong style="font-family: Poppins,sans-serif;">StudentID<strong></th>
+            <th><strong style="font-family: Poppins,sans-serif;">Completion Date</strong></th>
+            <th><strong style="font-family: Poppins,sans-serif;">Document URL</strong></th>
+            <th><strong style="font-family: Poppins,sans-serif;">Student Name</strong></th>
+            <th><strong style="font-family: Poppins,sans-serif;">Email</strong></th>
+            <th><strong style="font-family: Poppins,sans-serif;">Contact</strong></th>
+
+        </tr>
+        <%
+            while (rs.next()) {
+        %>
+        <TR class>
+            <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(1)%>
+            </TD>
+            <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(2)%>
+            </TD>
+            <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(3)%>
+            </TD>
+            <td>
+                <a id="documentLink" href="" style="font-family: Poppins,sans-serif;">
+                    <%=rs.getString(4)%>
+                </a>
+            </td>
+            <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(5)%>
+            </TD>
+            <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(6)%>
+            </TD>
+            <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(7)%>
+            </TD>
+        </TR>
+
+        <% } %>
+        <%
+            // close all the connections.
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (Exception ex) {
+        %>
+        </font>
+        <font size="+3" color="red"></b>
+                <%
+                                            out.println("Unable to connect to database.");
+                                        }
+                                    %>
+    </TABLE>
+    <TABLE>
+        <TR>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+    </TABLE>
+    </font>
 </div>
+
 
 <footer id="footer">
     <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>
@@ -348,9 +378,18 @@
 
 <script>
 
-    function afun(){
-        alert("Certificate Added Succesfully");
-    }
+    / Get the cell containing the anchor tag
+    var documentCell = document.getElementById('documentCell');
+
+    // Get the anchor tag element
+    var documentLink = documentCell.querySelector('a');
+
+    // Add a click event listener to the anchor tag
+    documentLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default navigation behavior
+        var href = this.getAttribute('href'); // Get the href value
+        window.location.href = href; // Navigate to the URL
+
     var darkModeEnabled = false;
 
     function toggleDarkMode() {

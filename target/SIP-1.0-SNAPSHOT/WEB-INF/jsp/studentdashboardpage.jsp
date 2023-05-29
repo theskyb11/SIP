@@ -190,7 +190,7 @@
 
         #footer {
             background-color: #4390ff;
-            color: #fff;
+            color: #262626;
             padding: 10px;
             margin-top: auto;
             text-align: center;
@@ -207,6 +207,8 @@
             border-radius: 50%;
             border: #262626;
             margin: 7%;
+            margin-right: 50px;
+            margin-left: 50px;
             background-color: #fff;
             color: #262626;
             cursor: pointer;
@@ -225,6 +227,15 @@
             object-fit: cover;
         }
 
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circular-button:not(:first-child) {
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -259,19 +270,45 @@
 
 <%--//Putting content here--%>
 <br>
-<h1> Name: Samarp Jain</h1>
+<h1 style="font-size: 24px; font-weight: bold; color: #707070; margin-bottom: 10px;margin-left: 10px;">
+    Name: ${name}</h1>
+<h1 style="font-size: 24px; font-weight: bold; color: #707070; margin-bottom: 10px;margin-left: 10px;">
+    StudentID: ${studentID}</h1>
 <br>
-<h1> PRN:202101040191</h1>
-<button class="circular-button">
-    <img src="https://www.linkpicture.com/q/try2.png" alt="Image 1">
-</button>
+<%--<h1> PRN:202101040191</h1>--%>
+<div class="button-container">
+    <a href="fileupload" class="image-button" style="text-decoration: none;">
+        <div class="circular-button">
+            <img src="https://www.linkpicture.com/q/try2.png" alt="Image 1">
+        </div>
+        <h3 style="font-size: 30px; font-weight: bold; color: #444442; margin-top: 10px;margin-left: 105px">Add
+            Certificate</h3>
+    </a>
 
-<button class="circular-button">
-    <img src="tru2.gif" alt="Image 2">
-</button>
-<button class="circular-button">
-    <img src="https://www.linkpicture.com/q/try3.png" alt="Image 3">
-</button>
+    <a href="viewstatus" class="image-button" style="text-decoration: none;">
+        <div class="circular-button">
+            <img width="144" height="144" src="https://www.linkpicture.com/q/loading_2.png" alt="refresh--v1"/>
+        </div>
+        <h3 style="font-size: 30px; font-weight: bold; color: #444442; margin-top: 10px;margin-left: 150px">Status</h3>
+    </a>
+
+    <a href="delete" class="image-button" style="text-decoration: none;">
+        <div class="circular-button">
+            <img src="https://www.linkpicture.com/q/try3.png" alt="Image 3">
+        </div>
+        <h3 style="font-size: 30px; font-weight: bold; color: #444442; margin-top: 10px;margin-left: 90px">Delete
+            Certificate</h3>
+    </a>
+
+    <a href="display" class="image-button" style="text-decoration: none;">
+        <div class="circular-button">
+            <img src="https://www.linkpicture.com/q/documents.png" alt="Image 3">
+        </div>
+        <h3 style="font-size: 30px; font-weight: bold; color: #444442; margin-top: 10px;margin-left: 90px">Show
+            Certificates</h3>
+    </a>
+</div>
+
 
 <footer id="footer">
     <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>

@@ -42,10 +42,10 @@
             line-height: 1.5;
         }
 
-        input:focus~label,
-        textarea:focus~label,
-        input:valid~label,
-        textarea:valid~label {
+        input:focus ~ label,
+        textarea:focus ~ label,
+        input:valid ~ label,
+        textarea:valid ~ label {
             font-size: 0.75em;
             color: #999;
             top: -5px;
@@ -99,8 +99,8 @@
             outline: 0;
         }
 
-        input:focus~span,
-        textarea:focus~span {
+        input:focus ~ span,
+        textarea:focus ~ span {
             width: 100%;
             -webkit-transition: all 0.075s ease;
             transition: all 0.075s ease;
@@ -146,18 +146,64 @@
             }
         }
 
-        input[type=checkbox]+label {
+        input[type=checkbox] + label {
             color: #ccc;
             font-style: italic;
         }
 
-        input[type=checkbox]:checked+label {
+        input[type=checkbox]:checked + label {
             color: #f00;
             font-style: normal;
         }
+
+
     </style>
 </head>
 <body>
-<h1>Hello World!</h1>
+<div class="container">
+    <div class="image-section">
+        <img src="https://mitaoe.mastersofterp.in/Images/Login/mita_logo.png" alt="Contact Image"
+             class="contact-image">
+    </div>
+    <div class="contact-section">
+        <h1>Contact Us</h1>
+    </div>
+    <form action="/sendEmail" method="post">
+        <div class="row input-container">
+            <div class="col-xs-12">
+                <div class="styled-input wide">
+                    <input type="text" required/>
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="styled-input">
+                    <input type="text" required/>
+                    <label>Email</label>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="styled-input" style="float:right;">
+                    <input type="text" required/>
+                    <label>Phone Number</label>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="styled-input wide">
+                    <textarea required></textarea>
+                    <label>Message</label>
+                </div>
+            </div>
+            <!-- <div class="col-xs-12">
+                <div class="btn-lrg submit-btn">Send Message</div>
+            </div> -->
+            <div class="col-xs-12">
+                <div>
+                    <input type="submit" value="Send Message">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

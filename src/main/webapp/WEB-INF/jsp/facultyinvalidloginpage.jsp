@@ -156,7 +156,7 @@
                         <input type="password" name="b" placeholder="Password" required>
                     </div>
                     <h4 style="color: red;"> *Invalid Credentials</h4><br>
-                    <button type="submit" style="background-color: #03a9f4; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; cursor: pointer; align-content:center;">Sign In2</button>
+                    <button type="submit" style="background-color: #03a9f4; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; cursor: pointer; align-content:center;">Sign In</button>
                 </div>
             </form>
         </div>

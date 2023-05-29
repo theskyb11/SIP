@@ -1,17 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samarp
-  Date: 28-05-2023
-  Time: 22:19
-  To change this template use File | Settings | File Templates.
+<%--  
+    Created by IntelliJ IDEA
+    User: Akash
+    Date: 5/29/2023
+    Time: 8:14 AM
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Add Certificate Details</title>
+    <title>Choose Search Type</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="https://mitaoe.mastersofterp.in/Images/Login/mita_logo_fv.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,12 +27,8 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /*padding: 0;*/
-            /*align-items: center;*/
-            justify-content: center;
-            /*background-color: #f4f4f4;*/
-
         }
+
         body.dark-mode {
             background-color: #000;
             color: #fff;
@@ -213,82 +207,50 @@
             color: #fff;
         }
 
-        .circular-button {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: #262626;
-            margin: 7%;
-            background-color: #fff;
-            color: #262626;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .circular-button:hover {
-            transform: scale(1.05);
-        }
-
-        .circular-button img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .button-container {
+        .contain {
             display: flex;
-            justify-content: center;
             align-items: center;
-        }
-        .form-container {
-            width: 400px;
-            background-color: #aaaaaa;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 20px auto 0;
+            justify-content: center;
+            margin: 10%;
         }
 
-
-        h1 {
-            color: #333333;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .form-container label {
-            align-items:center ;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333333;
-
-        }
-
-        .form-container input[type="text"],
-        .form-container input[type="date"],
-        .form-container input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cccccc;
-            border-radius: 3px;
-            font-size: 16px;
-        }
-
-        .form-container input[type="submit"] {
-            background-color: #3498DB;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
+        .buttons {
+            padding: 30px;
+            margin: 2%;
+            background: #dbbdbd;
+            width: 320px;
+            height: 180px;
+            border-radius: 20px;
+            transition: .2s all;
             cursor: pointer;
-            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
-        .form-container input[type="submit"]:hover {
-            background-color: #45a049;
+        .buttons a {
+            font-size: 30px;
+            text-decoration: none;
+            color: #262626;
+            margin-left: 5px;
+        }
+
+
+        .contain:hover .buttons {
+            filter: blur(3px);
+            opacity: .5;
+            transform: scale(0.98);
+            box-shadow: none;
+        }
+
+        .contain:hover .buttons:hover {
+            transform: scale(1);
+            filter: blur(0px);
+            opacity: 1;
+            box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+            background: rgb(232, 62, 62);
+            color: white;
         }
 
 
@@ -305,7 +267,7 @@
  </div></span>
     </div>
     <div class="navbar-contact">
-        <a href="studentdashboardpage.htm"><b style="color: #262626; margin-right: 15px; font-size: 20px">Home</b></a>
+        <a href="facultydashboardpage.htm"><b style="color: #262626; margin-right: 15px; font-size: 20px">Home</b></a>
         <a href="contactpage.htm"><b style="font-size: 20px; color: #262626">Contact Us</b></a>
         <a href="tel: +91-8793323500" style="color: #fff"><i class="fa fa-phone"></i>
             +91-8793323500</a>
@@ -323,23 +285,18 @@
     </div>
 
 </div>
-<div class="form-container">
-    <h1>Add Student Certificate</h1>
-    <form action="insert" method="post">
-        <label for="certificateId">Certificate ID:</label>
-        <input type="text" id="certificateId" name="a" required><br><br>
 
-        <label for="studentId">Student ID:</label>
-        <input type="text" id="studentId" name="b" required><br><br>
-
-        <label for="completionDate">Completion Date:</label>
-        <input type="date" id="completionDate" name="c" required><br><br>
-
-        <label for="document">Document:</label>
-        <input type="text" id="document" name="d" required><br><br>
-
-        <input type="submit" value="Add Certificate" onclick="afun()">
-    </form>
+<%--//Putting content here--%>
+<div class="contain">
+    <div class="buttons">
+        <p><a href="search1.htm" ><b>By StudentID & Validate</b></a></p>
+    </div>
+    <div class="buttons">
+        <p><a href="search2.htm"><b>By Name</b></a></p>
+    </div>
+    <div class="buttons">
+        <p><a href="search3.htm"><b>By CertificateID</b></a></p>
+    </div>
 </div>
 
 <footer id="footer">
@@ -347,10 +304,6 @@
 </footer>
 
 <script>
-
-    function afun(){
-        alert("Certificate Added Succesfully");
-    }
     var darkModeEnabled = false;
 
     function toggleDarkMode() {
@@ -381,5 +334,7 @@
         document.getElementById("toggle-theme-slider").checked = true;
     }
 </script>
+
+
 </body>
 </html>

@@ -1,17 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samarp
-  Date: 28-05-2023
-  Time: 22:19
-  To change this template use File | Settings | File Templates.
+<%--  
+    Created by IntelliJ IDEA
+    User: Akash
+    Date: 5/29/2023
+    Time: 8:02 AM
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Add Certificate Details</title>
+    <title>Search Student Certificate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="https://mitaoe.mastersofterp.in/Images/Login/mita_logo_fv.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,12 +27,8 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /*padding: 0;*/
-            /*align-items: center;*/
-            justify-content: center;
-            /*background-color: #f4f4f4;*/
-
         }
+
         body.dark-mode {
             background-color: #000;
             color: #fff;
@@ -204,13 +198,15 @@
             background-color: #4390ff;
             color: #262626;
             padding: 10px;
-            margin-top: auto;
+
             text-align: center;
+
         }
 
         #footer.dark-mode-footer {
             background-color: #aaaaaa;
             color: #fff;
+
         }
 
         .circular-button {
@@ -219,6 +215,8 @@
             border-radius: 50%;
             border: #262626;
             margin: 7%;
+            margin-right: 50px;
+            margin-left: 50px;
             background-color: #fff;
             color: #262626;
             cursor: pointer;
@@ -236,62 +234,242 @@
             height: 100%;
             object-fit: cover;
         }
+
         .button-container {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .form-container {
-            width: 400px;
-            background-color: #aaaaaa;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 20px auto 0;
+
+        .circular-button:not(:first-child) {
+            margin-left: 20px;
         }
 
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-        h1 {
-            color: #333333;
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+            display: flex;
+            align-items: center; /* Add this line */
+        }
+
+        .searchTerm:focus {
+            color: #00B4CC;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
             text-align: center;
-            font-weight: bold;
-        }
-
-        .form-container label {
-            align-items:center ;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333333;
-
-        }
-
-        .form-container input[type="text"],
-        .form-container input[type="date"],
-        .form-container input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cccccc;
-            border-radius: 3px;
-            font-size: 16px;
-        }
-
-        .form-container input[type="submit"] {
-            background-color: #3498DB;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
             cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+        .search-bar input,
+        .searsh-button,
+        .searsh-button:before,
+        .searsh-button:after {
+            transition: all 0.25s ease-out;
+        }
+
+        .search-bar input,
+        .searsh-button {
+            width: 3em;
+            height: 3em;
+        }
+
+        .search-bar input:invalid:not(:focus),
+        .searsh-button {
+            cursor: pointer;
+        }
+
+        .search-bar,
+        .search-bar input:focus,
+        .search-bar input:valid {
             width: 100%;
         }
 
-        .form-container input[type="submit"]:hover {
-            background-color: #45a049;
+        .search-bar input:focus,
+        .search-bar input:not(:focus) + .searsh-button:focus {
+            outline: transparent;
         }
 
+        .search-bar {
+            margin: auto;
+            margin-top: 2vh;
+            padding: 1.5em;
+            justify-content: center;
+            max-width: 30em;
+        }
 
+        .search-bar input {
+            background: transparent;
+            border-radius: 1.5em;
+            box-shadow: 0 0 0 0.4em #262626 inset;
+            padding: 0.75em;
+            transform: translate(0.5em, 0.5em) scale(0.5);
+            transform-origin: 100% 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            color: white;
+        }
+
+        .search-bar input:focus,
+        .search-bar input:valid {
+            background: #282539;
+            border-radius: 0.375em 0 0 0.375em;
+            box-shadow: 0 0 0 0.1em #CBBDDB inset;
+            transform: scale(1);
+        }
+
+        .searsh-button {
+            background: #262626;
+            border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
+            padding: 0.75em;
+            position: relative;
+            transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
+            transform-origin: 0 50%;
+        }
+
+        .searsh-button:before,
+        .searsh-button:after {
+            content: "";
+            display: block;
+            opacity: 0;
+            position: absolute;
+        }
+
+        .searsh-button:before {
+            border-radius: 50%;
+            box-shadow: 0 0 0 0.2em #262626 inset;
+            top: 0.75em;
+            left: 0.75em;
+            width: 1.2em;
+            height: 1.2em;
+        }
+
+        .searsh-button:after {
+            background: #262626;
+            border-radius: 0 0.25em 0.25em 0;
+            top: 51%;
+            left: 51%;
+            width: 0.75em;
+            height: 0.25em;
+            transform: translate(0.2em, 0) rotate(45deg);
+            transform-origin: 0 50%;
+        }
+
+        .searsh-button span {
+            display: inline-flex;
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+        }
+
+        input[type="search"]::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-left: 10px;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, #CBBDDB 45%, #CBBDDB 55%, rgba(0, 0, 0, 0) 57%, rgba(0, 0, 0, 0) 100%), linear-gradient(135deg, transparent 0%, transparent 43%, #CBBDDB 45%, #CBBDDB 55%, transparent 57%, transparent 100%);
+        }
+
+        /* Active state */
+
+        .search-bar input:focus + .searsh-button,
+        .search-bar input:valid + .searsh-button {
+            background: #8F7CEC;
+            border-radius: 0 0.375em 0.375em 0;
+            transform: scale(1);
+            position: absolute;
+            display: flex;
+            align-self: center;
+            top: 32.6vh;
+            left: 55vw;
+        }
+
+        .search-bar input:focus + .searsh-button:before,
+        .search-bar input:focus + .searsh-button:after,
+        .search-bar input:valid + .searsh-button:before,
+        .search-bar input:valid + .searsh-button:after {
+            opacity: 1;
+        }
+
+        .search-bar input:focus + .searsh-button:active,
+        .search-bar input:valid + .searsh-button:active {
+            transform: translateY(1px);
+        }
+
+        .search-bar {
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -305,7 +483,7 @@
  </div></span>
     </div>
     <div class="navbar-contact">
-        <a href="studentdashboardpage.htm"><b style="color: #262626; margin-right: 15px; font-size: 20px">Home</b></a>
+        <a href="facultydashboardpage.htm"><b style="color: #262626; margin-right: 15px; font-size: 20px">Home</b></a>
         <a href="contactpage.htm"><b style="font-size: 20px; color: #262626">Contact Us</b></a>
         <a href="tel: +91-8793323500" style="color: #fff"><i class="fa fa-phone"></i>
             +91-8793323500</a>
@@ -323,34 +501,21 @@
     </div>
 
 </div>
-<div class="form-container">
-    <h1>Add Student Certificate</h1>
-    <form action="insert" method="post">
-        <label for="certificateId">Certificate ID:</label>
-        <input type="text" id="certificateId" name="a" required><br><br>
 
-        <label for="studentId">Student ID:</label>
-        <input type="text" id="studentId" name="b" required><br><br>
-
-        <label for="completionDate">Completion Date:</label>
-        <input type="date" id="completionDate" name="c" required><br><br>
-
-        <label for="document">Document:</label>
-        <input type="text" id="document" name="d" required><br><br>
-
-        <input type="submit" value="Add Certificate" onclick="afun()">
+<%--//Putting content here--%>
+<h1>Search by StudentID</h1>
+<div class="search-bar">
+    <form action="search1" method="post" commandName="userForm" path="email">
+        <input type="text" required autocomplete="off" name="search" placeholder="Enter StudentID">
+        <button type="submit" class="searsh-button"></button>
     </form>
 </div>
 
-<footer id="footer">
+<footer id="footer" class="footer">
     <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>
 </footer>
 
 <script>
-
-    function afun(){
-        alert("Certificate Added Succesfully");
-    }
     var darkModeEnabled = false;
 
     function toggleDarkMode() {
@@ -381,5 +546,7 @@
         document.getElementById("toggle-theme-slider").checked = true;
     }
 </script>
+
+
 </body>
 </html>

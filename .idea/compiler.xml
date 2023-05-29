@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SIP" options="-endorseddirs C:\Users\Samarp\OneDrive\Desktop\DBMS_SIP\SIP\target/endorsed" />
+      <module name="SIP" options="-endorseddirs C:\Users\Akash\Documents\NetBeansProjects\SIP\target/endorsed" />
     </option>
   </component>
 </project>

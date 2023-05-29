@@ -1,17 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samarp
-  Date: 28-05-2023
-  Time: 22:19
-  To change this template use File | Settings | File Templates.
+<%--  
+    Created by IntelliJ IDEA
+    User: Akash
+    Date: 5/29/2023
+    Time: 8:36 AM
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Add Certificate Details</title>
+    <title>Search Student Certificate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="https://mitaoe.mastersofterp.in/Images/Login/mita_logo_fv.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,12 +29,8 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /*padding: 0;*/
-            /*align-items: center;*/
-            justify-content: center;
-            /*background-color: #f4f4f4;*/
-
         }
+
         body.dark-mode {
             background-color: #000;
             color: #fff;
@@ -219,6 +215,8 @@
             border-radius: 50%;
             border: #262626;
             margin: 7%;
+            margin-right: 50px;
+            margin-left: 50px;
             background-color: #fff;
             color: #262626;
             cursor: pointer;
@@ -236,62 +234,121 @@
             height: 100%;
             object-fit: cover;
         }
+
         .button-container {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .form-container {
-            width: 400px;
-            background-color: #aaaaaa;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 20px auto 0;
+
+        .circular-button:not(:first-child) {
+            margin-left: 20px;
         }
 
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-        h1 {
-            color: #333333;
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+            display: flex;
+            align-items: center; /* Add this line */
+        }
+
+        .searchTerm:focus {
+            color: #00B4CC;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
             text-align: center;
-            font-weight: bold;
-        }
-
-        .form-container label {
-            align-items:center ;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333333;
-
-        }
-
-        .form-container input[type="text"],
-        .form-container input[type="date"],
-        .form-container input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cccccc;
-            border-radius: 3px;
-            font-size: 16px;
-        }
-
-        .form-container input[type="submit"] {
-            background-color: #3498DB;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
             cursor: pointer;
-            width: 100%;
+            font-size: 20px;
         }
 
-        .form-container input[type="submit"]:hover {
-            background-color: #45a049;
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
 
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+
+        .btn-accept {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .btn-reject {
+            background-color: #F44336;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -305,7 +362,7 @@
  </div></span>
     </div>
     <div class="navbar-contact">
-        <a href="studentdashboardpage.htm"><b style="color: #262626; margin-right: 15px; font-size: 20px">Home</b></a>
+        <a href="facultydashboardpage.htm"><b style="color: #262626; margin-right: 15px; font-size: 20px">Home</b></a>
         <a href="contactpage.htm"><b style="font-size: 20px; color: #262626">Contact Us</b></a>
         <a href="tel: +91-8793323500" style="color: #fff"><i class="fa fa-phone"></i>
             +91-8793323500</a>
@@ -323,24 +380,101 @@
     </div>
 
 </div>
-<div class="form-container">
-    <h1>Add Student Certificate</h1>
-    <form action="insert" method="post">
-        <label for="certificateId">Certificate ID:</label>
-        <input type="text" id="certificateId" name="a" required><br><br>
 
-        <label for="studentId">Student ID:</label>
-        <input type="text" id="studentId" name="b" required><br><br>
+<%--//Putting content here--%>
+<h1>Search By Student ID</h1>
+<%
+    try {
 
-        <label for="completionDate">Completion Date:</label>
-        <input type="date" id="completionDate" name="c" required><br><br>
+        String connectionURL = "jdbc:mysql://localhost:3306/sip";
+        Connection connection = null;
 
-        <label for="document">Document:</label>
-        <input type="text" id="document" name="d" required><br><br>
+        Statement statement = null;
+        ResultSet rs = null;
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-        <input type="submit" value="Add Certificate" onclick="afun()">
-    </form>
-</div>
+        connection = DriverManager.getConnection(connectionURL, "root", "root");
+        String s = (String) request.getAttribute("msg");
+        statement = connection.createStatement();
+        String QueryString = "SELECT * from adding a NATURAL JOIN interntable i where a.StudentID= " + s + ";";
+        rs = statement.executeQuery(QueryString);
+%>
+<TABLE cellpadding="15" border="1" style="background-color: #FFFFE0;" class="content-table">
+    <tr style="background-color: #BDB76B;">
+        <th><strong style="font-family: Poppins,sans-serif;">CertificateID</strong></th>
+        <th><strong style="font-family: Poppins,sans-serif;">StudentID<strong></th>
+        <th><strong style="font-family: Poppins,sans-serif;">Completion Date</strong></th>
+        <th><strong style="font-family: Poppins,sans-serif;">Document URL</strong></th>
+        <th><strong style="font-family: Poppins,sans-serif;">Status</strong></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <%
+        while (rs.next()) {
+    %>
+    <TR>
+        <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(1)%>
+        </TD>
+        <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(2)%>
+        </TD>
+        <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(3)%>
+        </TD>
+        <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(4)%>
+        </TD>
+        <TD style="font-family: Poppins,sans-serif;"><%=rs.getString(6)%>
+        </TD>
+        <TD>
+            <form action="acceptreq">
+
+                <button class="btn-accept" type="submit" name="id" value="<%=rs.getString(1)%>" onclick="afun()"><img
+                        width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/checkmark--v1.png"
+                        alt="checkmark--v1"/>
+                    Accept
+                </button>
+            </form>
+
+        </TD>
+        <td>
+            <form action="rejectreq">
+
+                <button class="btn-reject" type="submit" name="id" value="<%=rs.getString(1)%>" onclick="bfun()"><img
+                        width="30" height="30" src="https://img.icons8.com/material-rounded/60/multiply--v1.png"
+                        alt="multiply--v1"/>
+                    Reject
+                </button>
+            </form>
+        </td>
+
+    </TR>
+
+    <% } %>
+    <%
+        // close all the connections.
+        rs.close();
+        statement.close();
+        connection.close();
+    } catch (Exception ex) {
+    %>
+    </font>
+    <font size="+3" color="red"></b>
+            <%
+                                        out.println("Unable to connect to database.");
+                                    }
+                                %>
+</TABLE>
+<TABLE>
+    <TR>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+</TABLE>
+</font>
+
 
 <footer id="footer">
     <p>&copy; 2023 MIT Academy of Engineering | College Code - 6146</p>
@@ -348,9 +482,14 @@
 
 <script>
 
-    function afun(){
-        alert("Certificate Added Succesfully");
+    function afun() {
+        alert("Certificate Accepted Succesfully");
     }
+
+    function bfun() {
+        alert("Certificate Rejected Succesfully");
+    }
+
     var darkModeEnabled = false;
 
     function toggleDarkMode() {
@@ -381,5 +520,7 @@
         document.getElementById("toggle-theme-slider").checked = true;
     }
 </script>
+
+
 </body>
 </html>
